@@ -22,30 +22,29 @@ function splitTex(text) {
         throw new Error(`Text is too long, chunks length is ${chunksCount}`);
     }
 
+    let tpmText = '';
+
     while (true) {
-        let tpmText = '';
-
-        while (true) {
-            if (wordIndex === words.length) {
-                chunks.push(createChunk(tpmText, chunkIndex, chunksCount));
-                return chunks;
-            }
-
-            if (words[wordIndex].length > MAX_TEXT_SIZE) {
-                throw new Error(`Word '${words[wordIndex]} is too long, it's length is ${words[wordIndex].length}`)
-            }
-
-            if (createChunk(tpmText + words[wordIndex], chunkIndex, chunksCount).length < MAX_TEXT_SIZE) {
-                tpmText += words[wordIndex] + ' ';
-                ++wordIndex;
-                continue;
-            }
-
+        if (wordIndex === words.length) {
             chunks.push(createChunk(tpmText, chunkIndex, chunksCount));
-            tpmText = '';
-            ++chunkIndex;
+            return chunks;
         }
+
+        if (words[wordIndex].length > MAX_TEXT_SIZE) {
+            throw new Error(`Word '${words[wordIndex]} is too long, it's length is ${words[wordIndex].length}`)
+        }
+
+        if (createChunk(tpmText + words[wordIndex], chunkIndex, chunksCount).length < MAX_TEXT_SIZE) {
+            tpmText += words[wordIndex] + ' ';
+            ++wordIndex;
+            continue;
+        }
+
+        chunks.push(createChunk(tpmText, chunkIndex, chunksCount));
+        tpmText = '';
+        ++chunkIndex;
     }
+
 }
 
 function calculateChunks(words) {
@@ -85,4 +84,4 @@ function createChunk(text, k, n) {
     return `${text}${k}/${n}`;
 }
 
-console.log(splitTex('Your text'));
+console.log(splitTex('Lorem ipsum dolor sit amet consectetur adipiscing elit Nullam eleifend odio at magna pretium suscipit Nam commodo mauris felis ut suscipit velit efficitur eget Sed sit amet posuere risus'));
