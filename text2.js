@@ -59,6 +59,7 @@ function generateText(text, times) {
    return tmp;
 }
 
-const generatedText = generateText('Lorem ipsum dolor sit amet consectetur adipiscing elit Nullam eleifend odio at magna pretium suscipit Nam commodo mauris felis ut suscipit velit efficitur eget Sed sit amet posuere risus', 3)
+const generatedText = generateText('Lorem ipsum dolor sit amet consectetur adipiscing elit Nullam eleifend odio ' +
+    'at magna pretium suscipit Nam commodo mauris felis ut suscipit velit efficitur eget Sed sit amet posuere risus', 3000)
 
 chunkify(generatedText);

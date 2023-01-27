@@ -34,6 +34,6 @@ function generateText(text, times) {
    return tmp;
 }
 
-const generatedText = generateText('1010101 1010101010 1010101010 101010101 ', 31000);
+const generatedText = generateText('1010101 1010101010 1010101010 1 ', 31000);
 
-splitText('odioatgdfghsdfcommododioatgdfghsdfcommododioatgdfghsdfcommfcommdfgdfdfodioatgdfghsdfcommododioatgdfghsdfcommododioatgdfghsdfcommfcommdfgdfd1111j');
+splitText(generatedText);
